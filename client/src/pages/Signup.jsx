@@ -41,7 +41,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup">
+    <div className="container">
       <h2>Signup</h2>
       <input
         name="firstName"

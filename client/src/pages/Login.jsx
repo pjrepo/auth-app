@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="container">
       <h2>Login</h2>
       <input name="email" placeholder="Email" onChange={handleChange} />
       <input

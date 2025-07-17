@@ -42,7 +42,7 @@ const Home = () => {
   if (!user) return <p>Loading...</p>;
 
   return (
-    <div className="home">
+    <div className="container">
       <h2>Welcome, {user.firstName}!</h2>
       <p>Email: {user.email}</p>
       <p>Mobile: {user.mobile}</p>
@@ -66,7 +66,8 @@ const Home = () => {
       <hr />
       <button
         onClick={logout}
-        style={{ backgroundColor: "red", color: "white" }}
+        className="logout-btn"
+        // style={{ backgroundColor: "red", color: "white" }}
       >
         Logout
       </button>
