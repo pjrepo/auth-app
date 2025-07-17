@@ -79,7 +79,6 @@ const Signup = () => {
               style={{
                 color: "#4f46e5",
                 cursor: "pointer",
-                textDecoration: "underline",
               }}
             >
               Resend OTP
