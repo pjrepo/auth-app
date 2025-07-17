@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 
 const Signup = () => {
@@ -70,6 +70,9 @@ const Signup = () => {
           <button onClick={signup}>Complete Signup</button>
         </>
       )}
+      <p style={{ marginTop: "10px" }}>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 };

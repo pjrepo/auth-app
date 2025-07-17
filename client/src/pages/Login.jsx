@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 
 const Login = () => {
@@ -32,6 +32,9 @@ const Login = () => {
         onChange={handleChange}
       />
       <button onClick={handleLogin}>Login</button>
+      <p style={{ marginTop: "10px" }}>
+        Don't have an account? <Link to="/signup">Create one</Link>
+      </p>
     </div>
   );
 };
