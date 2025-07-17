@@ -12,7 +12,7 @@ export const sendOtp = async (req, res) => {
   try {
     const { email } = req.body;
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiry = new Date(Date.now() + 10 * 60 * 1000); // 10 min
+    const expiry = new Date(Date.now() + 10 * 60 * 1000);
 
     await Otp.findOneAndUpdate(
       { email },
@@ -20,7 +20,11 @@ export const sendOtp = async (req, res) => {
       { upsert: true, new: true }
     );
 
-    await sendEmail(email, "Your OTP", `Your OTP is: ${otp}`);
+    await sendEmail(
+      email,
+      "Your OTP of Authentication Application",
+      `Your OTP is: ${otp}, which is valid for only 10 minutes.`
+    );
     res.json({ message: "OTP sent successfully" });
   } catch (err) {
     console.error(err);
@@ -54,8 +58,7 @@ export const signup = async (req, res) => {
     }
 
     const existing = await User.findOne({ email });
-    if (existing)
-      return res.status(400).json({ error: "Email already exists" });
+    if (existing) return res.status(400).json({ error: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

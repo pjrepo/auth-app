@@ -1,7 +1,6 @@
 import cron from "node-cron";
 import User from "../models/User.js";
 
-// Runs every 3 hours at minute 0
 cron.schedule("0 */3 * * *", async () => {
   try {
     await User.updateMany(

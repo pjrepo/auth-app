@@ -1,0 +1,41 @@
+.signup {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 40px auto;
+  gap: 10px;
+}
+
+.signup input,
+.signup button {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 40px auto;
+  gap: 10px;
+}
+
+.login input,
+.login button {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.home {
+  max-width: 400px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home input,
+.home button {
+  padding: 8px;
+  font-size: 16px;
+}
