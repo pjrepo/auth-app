@@ -15,8 +15,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  console.log("GET / called");
-  res.send("Server is running");
+  res.send(
+    "Hi there! I'm the backend server of Authentication app deployed on render😉"
+  );
 });
 
 app.use("/api/auth", authRoutes);
