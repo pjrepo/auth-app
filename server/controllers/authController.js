@@ -12,7 +12,7 @@ export const sendOtp = async (req, res) => {
   try {
     const { email } = req.body;
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiry = new Date(Date.now() + 10 * 60 * 1000);
+    const expiry = new Date(Date.now() + 2 * 60 * 1000);
 
     await Otp.findOneAndUpdate(
       { email },
@@ -23,7 +23,7 @@ export const sendOtp = async (req, res) => {
     await sendEmail(
       email,
       "Your OTP of Authentication Application",
-      `Your OTP is: ${otp}, which is valid for only 10 minutes.`
+      `Your OTP is: ${otp}, which is valid for only 2 minutes.`
     );
     res.json({ message: "OTP sent successfully" });
   } catch (err) {

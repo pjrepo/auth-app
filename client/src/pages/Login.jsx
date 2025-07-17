@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import API from "../services/api";
+import ToggleMode from "../components/ToggleMode";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,15 +17,16 @@ const Login = () => {
     try {
       const res = await API.post("/login", form);
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
+      toast.success("Login successful");
       navigate("/home");
     } catch (err) {
-      alert(err.response?.data?.error || "Login failed");
+      toast.error(err.response?.data?.error || "Login failed");
     }
   };
 
   return (
     <div className="container">
+      <ToggleMode />
       <h2>Login</h2>
       <input name="email" placeholder="Email" onChange={handleChange} />
       <input

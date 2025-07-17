@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import API from "../services/api";
+import ToggleMode from "../components/ToggleMode";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -23,25 +26,26 @@ const Signup = () => {
       await API.post("/send-otp", { email: form.email });
       console.log("OTP send button pressed!");
       setOtpSent(true);
-      alert("OTP sent to your email");
+      toast.success("OTP sent to your email");
     } catch (err) {
       console.log(err);
-      alert(err.response?.data?.error || "Failed to send OTP");
+      toast.error(err.response?.data?.error || "Failed to send OTP");
     }
   };
 
   const signup = async () => {
     try {
       await API.post("/signup", { ...form, otp });
-      alert("Signup successful");
+      toast.success("Signup successful");
       navigate("/login");
     } catch (err) {
-      alert(err.response?.data?.error || "Signup failed");
+      toast.error(err.response?.data?.error || "Signup failed");
     }
   };
 
   return (
     <div className="container">
+      <ToggleMode />
       <h2>Signup</h2>
       <input
         name="firstName"
@@ -68,6 +72,19 @@ const Signup = () => {
             onChange={(e) => setOtp(e.target.value)}
           />
           <button onClick={signup}>Complete Signup</button>
+          <p style={{ textAlign: "center", marginTop: "10px" }}>
+            Didn’t receive OTP?{" "}
+            <span
+              onClick={sendOtp}
+              style={{
+                color: "#4f46e5",
+                cursor: "pointer",
+                textDecoration: "underline",
+              }}
+            >
+              Resend OTP
+            </span>
+          </p>
         </>
       )}
       <p style={{ marginTop: "10px" }}>

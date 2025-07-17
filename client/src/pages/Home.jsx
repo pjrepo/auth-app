@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import API from "../services/api";
+import ToggleMode from "../components/ToggleMode";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const Home = () => {
       const res = await API.get("/user");
       setUser(res.data);
     } catch (err) {
-      alert("Session expired. Please log in again.");
+      toast.error("Session expired. Please log in again.");
       localStorage.removeItem("token");
       navigate("/login");
     }
@@ -22,11 +25,11 @@ const Home = () => {
   const updatePassword = async () => {
     try {
       await API.put("/update-password", { currentPassword, newPassword });
-      alert("Password updated successfully");
+      toast.success("Password updated successfully");
       setCurrentPassword("");
       setNewPassword("");
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to update password");
+      toast.error(err.response?.data?.error || "Failed to update password");
     }
   };
 
@@ -43,6 +46,7 @@ const Home = () => {
 
   return (
     <div className="container">
+      <ToggleMode />
       <h2>Welcome, {user.firstName}!</h2>
       <p>Email: {user.email}</p>
       <p>Mobile: {user.mobile}</p>
