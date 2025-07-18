@@ -27,9 +27,33 @@ app.use(cors());
    Default GET route for root URL (health check)
 ============================================ */
 app.get("/", (req, res) => {
-  res.send(
-    "Hi there! I'm the backend server of Authentication app deployed on render😉"
-  );
+  res.send(`
+    <html>
+      <head>
+        <title>Authentication Server</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+          }
+          h1 {
+            color: #4f46e5;
+          }
+          p {
+            font-size: 18px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>🚀 Authentication Backend Server</h1>
+        <p>Hi there! I'm live and running on Render 😉</p>
+        <p><strong>Version:</strong> 1.0.0</p>
+      </body>
+    </html>
+  `);
 });
 
 /* ============================================
