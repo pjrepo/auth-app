@@ -90,7 +90,7 @@ EMAIL_PASS
 
 - User requests OTP via /send-otp.
 - Verifies OTP with /verify-otp.
-  Calls /signup with details and OTP.
+- Calls /signup with details and OTP.
 
 ##### Login:
 
